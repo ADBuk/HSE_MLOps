@@ -1,0 +1,22 @@
+[tool.poetry]
+name = "mlops-hw"
+version = "0.1.0"
+description = "HW for MLOps course HSE"
+authors = ["ADBuk <buk99@inbox.ru>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = ">=3.10,<3.13"
+black = "^23.10.1"
+scikit-learn = "^1.3.2"
+pandas = "^2.1.2"
+fastapi = "^0.104.1"
+uvicorn = {extras = ["standard"], version = "^0.24.0.post1"}
+flake8 = "^6.1.0"
+catboost = "^1.2.2"
+httpx = "^0.25.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
