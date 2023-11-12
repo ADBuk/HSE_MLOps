@@ -1,16 +1,15 @@
-from fastapi.testclient import TestClient
 from main import app
+from fastapi.testclient import TestClient
 
-client = TestClient(app)
-
+test_client = TestClient(app)
 
 def test_train_model():
-    hyperparameters = {"fit_intercept": True, "copy_X": True}
+    hyperparameters = None
     training_data = {
         "features": [[1.0, 2.0], [2.0, 3.0], [3.0, 4.0], [5.0, 6.0]],
         "labels": [2.5, 3.5, 4.5, 5.5],
     }
-    response = client.post(
+    response = test_client.post(
         "http://0.0.0.0:8000/train_models",
         json={
             "hyperparameters": hyperparameters,
@@ -29,7 +28,7 @@ print(test_train_model())
 
 
 def test_get_model():
-    response = client.get("http://0.0.0.0:8000/get_all_models")
+    response = test_client.get("http://0.0.0.0:8000/get_all_models")
     print(response.status_code)
     data = response.json()
 
@@ -40,7 +39,7 @@ print(test_get_model())
 
 
 def delete_model(model_name="LinReg"):
-    response = client.post(
+    response = test_client.post(
         f"/delete_model",
         json={
             "model_name": f"{model_name}.pkl",
