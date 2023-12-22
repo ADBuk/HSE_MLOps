@@ -31,15 +31,16 @@ class ModelHandler:
             model = pickle.load(f)
         return model
 
-    def save_model(self, model_name) -> None:
+    def save_model(self, model_name, model) -> None:
         """
         function for saving trained models
         :param model_name: name of the trained model to save
+        :param model: model to be saved
         :return: None
         """
         model_path = os.path.join(self.storage, f"{model_name}.pkl")
         with open(model_path, "wb") as f:
-            pickle.dump(f)
+            pickle.dump(model, f)
 
     def get_all_models(self) -> List:
         """
@@ -82,7 +83,7 @@ class ModelHandler:
         else:
             raise f"{model_name} is not implemented for training. Available models are: {self.available_models}"
         if save:
-            self.save_model(model_name)
+            self.save_model(model_name, model)
 
     def delete_model(self, model_name: str) -> None:
         """
@@ -102,4 +103,4 @@ class ModelHandler:
         """
         model = self.load_model(model_name)
         predictions = model.predict(data)
-        return predictions.to_list()
+        return predictions.tolist()
