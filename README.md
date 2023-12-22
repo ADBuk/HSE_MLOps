@@ -21,3 +21,16 @@ poetry run main.py
 ```
 poetry run test.py
 ```
+### HW 2
+исправил ошибки в первой домашке, теперь все работает
+
+С DVC не разобрался, что надо сделать было, потыкал в терминале
+
+добавил работу в Minio + Docker
+
+Запуск:
+```
+docker compose up --abort-on-container-exit
+```
+
+blessrng не хватает 2 балла до 4)))) Пощады, готов на жоски gachi-штраф
